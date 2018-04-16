@@ -62,7 +62,7 @@
        					url : 'ws://10.245.170.169:9090'
     				 });
    
-     				var tfClient = new ROSLIB.TFClient({
+     				/*var tfClient = new ROSLIB.TFClient({
        					ros : ros,
        					fixedFrame : 'world',
        					angularThres : 0.01,
@@ -72,7 +72,7 @@
      				tfClient.subscribe('turtle1', function(tf) {
        					console.log(tf);
        					//Ouputting data: console.log(tf.translation.x);
-    				 });
+    				 }); */
    
      				ros.on('connection', function() {
        					console.log('Connected to websocket server.');
