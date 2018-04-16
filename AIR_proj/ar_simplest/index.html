@@ -41,7 +41,7 @@
 		<div onclick="hideMe(this)" id="description">
 			<h2>Simplest AR</h2>
 			<h5>(click to dismiss)</h5>
-			<p>This example displays a box relative to the pose of a TurtleBot 44.</p>
+			<p>This example displays a box relative to the pose of a TurtleBot 900.</p>
 		</div>
 		<script>
 			/*
@@ -58,8 +58,8 @@
 
 					// Connect to ROS 
 
-					/*var ros = new ROSLIB.Ros({
-       					url : 'ws://10.245.170.169:9090'
+					var ros = new ROSLIB.Ros({
+       					url : 'ws://172.20.10.2:9090'
     				 });
    
      				var tfClient = new ROSLIB.TFClient({
@@ -84,7 +84,7 @@
    
      				ros.on('close', function() {
        					console.log('Connection to websocket server closed.');
-     				});*/
+     				});
 
 					//**************************************
 					// Add a box 
