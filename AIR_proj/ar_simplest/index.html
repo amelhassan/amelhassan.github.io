@@ -31,6 +31,8 @@
 		<script type="module" src="../../polyfill/XRPolyfill.js"></script>
 		<script nomodule src="../../dist/webxr-polyfill.js"></script>
 		<script src="../common.js"></script>
+		<script type="text/javascript" src="http://static.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>
+    	<script type="text/javascript" src="http://static.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
 		
 	</head>
 	<body>
@@ -57,7 +59,7 @@
 					// Connect to ROS 
 
 					var ros = new ROSLIB.Ros({
-       					url : 'ws://localhost:9090'
+       					url : 'ws://10.245.170.169:9090'
     				 });
    
      				var tfClient = new ROSLIB.TFClient({
