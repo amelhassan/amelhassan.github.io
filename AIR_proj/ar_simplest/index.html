@@ -92,10 +92,10 @@
 
 					// Add a box 
 					const box = new THREE.Mesh(
-						new THREE.BoxBufferGeometry(0.1, 0.1, 0.1),
+						new THREE.BoxBufferGeometry(2, 2, 2),
 						new THREE.MeshPhongMaterial({ color: '#DDFFDD' })
 					)
-					box.position.set(x_position, 0.5, 2)
+					box.position.set(2, 0.5, 2)
 					this.floorGroup.add(box)
 
 					// Add some lights to the scene
