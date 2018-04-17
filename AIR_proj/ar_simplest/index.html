@@ -87,7 +87,7 @@
 
 
 
-				// Called during construction to allow the app to populate the THREE.Scene
+				/*// Called during construction to allow the app to populate the THREE.Scene
 				initializeScene(){
 
 					// Add a box 
@@ -103,12 +103,19 @@
 					const directionalLight = new THREE.DirectionalLight('#FFF', 0.6)
 					directionalLight.position.set(0, 10, 0)
 					this.scene.add(directionalLight)
-				}
+				}*/
 
-				/*initializeScene(){
+				initializeScene(){
+
+					const box = new THREE.Mesh(
+						new THREE.BoxBufferGeometry(2, 2, 2),
+						new THREE.MeshPhongMaterial({ color: '#fff42d' })
+					)
+					box.position.set(x_position, 0.5, 2)
+					this.floorGroup.add(box)
 
 					// Add some lights to the scene
-					this.scene.add(new THREE.AmbientLight('#FFF', 0.2))
+					this.scene.add(new THREE.AmbientLight('#FFF', 1.4))
 					const directionalLight = new THREE.DirectionalLight('#FFF', 0.6)
 					directionalLight.position.set(0, 10, 0)
 					this.scene.add(directionalLight)
@@ -120,12 +127,12 @@
 						document.getElementById("text").innerHTML = "Adding new box";
 					const box = new THREE.Mesh(
 						new THREE.BoxBufferGeometry(2, 2, 2),
-						new THREE.MeshPhongMaterial({ color: '#DDFFDD' })
+						new THREE.MeshPhongMaterial({ color: '#ff14d3' })
 					)
 					box.position.set(x_position, 0.5, 2)
 					this.floorGroup.add(box)
 					
-				}*/
+				}
 			}
 
 
