@@ -46,6 +46,8 @@
 		<script>
 					// Connect to ROS 
 					var x_position = 2;
+					var count = 0;
+
 					var ros = new ROSLIB.Ros({
        					url : 'ws://10.250.204.52:9090'
     				 });
@@ -122,11 +124,12 @@
 
 				}
 
+				
 				// Called once per frame
 				updateScene(frame){
-						document.getElementById("text").innerHTML = "Adding a new box...";
+						document.getElementById("text").innerHTML = "Adding a new box... " + count ;
 					const box = new THREE.Mesh(
-						new THREE.BoxBufferGeometry(1, 1, 1),
+						new THREE.BoxBufferGeometry(0.8, 0.3, 0.5),
 						new THREE.MeshPhongMaterial({ color: '#ff14d3' })
 					)
 					box.position.set(x_position, 0.5, 2)
