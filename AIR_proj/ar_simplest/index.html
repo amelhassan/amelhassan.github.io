@@ -127,7 +127,7 @@
 				
 				// Called once per frame
 				updateScene(frame){
-						document.getElementById("text").innerHTML = "Adding a new box... " + count ;
+						document.getElementById("text").innerHTML = "Adding a new box... " + count + " x: " + x_position ;
 					const box = new THREE.Mesh(
 						new THREE.BoxBufferGeometry(0.8, 0.3, 0.5),
 						new THREE.MeshPhongMaterial({ color: '#ff14d3' })
