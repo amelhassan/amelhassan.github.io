@@ -98,11 +98,11 @@
 					box.position.set(x_position, 0.5, 2)
 					this.floorGroup.add(box)
 
-					/*// Add some lights to the scene
-					this.scene.add(new THREE.AmbientLight('#FFF', 0.1))
-					const directionalLight = new THREE.DirectionalLight('#FFF', 0.1)
-					directionalLight.position.set(0, 2, 0)
-					this.scene.add(directionalLight)*/
+					// Add some lights to the scene
+					this.scene.add(new THREE.AmbientLight('#FFF', 2))
+					const directionalLight = new THREE.DirectionalLight('#FFF', 0.6)
+					directionalLight.position.set(0, 10, 0)
+					this.scene.add(directionalLight)
 				}
 
 				/*initializeScene(){
