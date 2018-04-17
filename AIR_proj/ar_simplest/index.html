@@ -41,7 +41,7 @@
 		<div onclick="hideMe(this)" id="description">
 			<h2>Simplest AR</h2>
 			<h5>(click to dismiss)</h5>
-			<p id="text" > This example displays a box relative to the pose of a TurtleBot... change.</p>
+			<p id="text" > This example displays a box relative to the pose of a TurtleBot... frame change.</p>
 		</div>
 		<script>
 					// Connect to ROS 
@@ -98,11 +98,11 @@
 					box.position.set(x_position, 0.5, 2)
 					this.floorGroup.add(box)
 
-					// Add some lights to the scene
+					/*// Add some lights to the scene
 					this.scene.add(new THREE.AmbientLight('#FFF', 0.1))
 					const directionalLight = new THREE.DirectionalLight('#FFF', 0.1)
 					directionalLight.position.set(0, 2, 0)
-					this.scene.add(directionalLight)
+					this.scene.add(directionalLight)*/
 				}
 
 				/*initializeScene(){
