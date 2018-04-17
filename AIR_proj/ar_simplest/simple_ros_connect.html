@@ -45,6 +45,8 @@
 		</div>
 		<script>
 
+			// Declare global variables 
+			
 			/*
 			ARSimplestExample shows how to populate the content scene 
 			*/
@@ -61,6 +63,18 @@
        					url : 'ws://10.250.204.52:9090'
     				 });
    
+     				var tfClient = new ROSLIB.TFClient({
+       					ros : ros,
+       					fixedFrame : 'world',
+       					angularThres : 0.01,
+       					transThres : 0.01
+     				});
+   
+     				tfClient.subscribe('turtle1', function(tf) {
+       					console.log(tf);
+       					console.log(tf.translation.x);
+    				 }); 
+   
      				ros.on('connection', function() {
        					console.log('Connected to websocket server.');
      				});
@@ -74,20 +88,6 @@
      				});
 				}
 
-				subscribe(x_position){
-					var tfClient = new ROSLIB.TFClient({
-       					ros : ros,
-       					fixedFrame : 'world',
-       					angularThres : 0.01,
-       					transThres : 0.01
-     				});
-   
-     				tfClient.subscribe('turtle1', function(tf) {
-       					console.log(tf);
-       					x_position = tf.translation.x;
-    				 }); 
-				}
-
 
 				// Called during construction to allow the app to populate the THREE.Scene
 				initializeScene(){
@@ -97,7 +97,7 @@
 						new THREE.BoxBufferGeometry(0.1, 0.1, 0.1),
 						new THREE.MeshPhongMaterial({ color: '#DDFFDD' })
 					)
-					box.position.set(x_position, 0.5, 2)
+					box.position.set(2, 0.5, 2)
 					this.floorGroup.add(box)
 
 					// Add some lights to the scene
