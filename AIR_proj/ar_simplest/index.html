@@ -41,10 +41,9 @@
 		<div onclick="hideMe(this)" id="description">
 			<h2>Simplest AR</h2>
 			<h5>(click to dismiss)</h5>
-			<p>This example displays a box relative to the pose of a TurtleBot... test frame update.</p>
+			<p id="text" > This example displays a box relative to the pose of a TurtleBot... frame update.</p>
 		</div>
 		<script>
-
 					// Connect to ROS 
 					var x_position = 2;
 					var ros = new ROSLIB.Ros({
@@ -83,6 +82,7 @@
 			class ARSimplestExample extends XRExampleBase {
 				constructor(domElement){
 					super(domElement, false)
+
 				}
 
 
@@ -112,16 +112,19 @@
 					const directionalLight = new THREE.DirectionalLight('#FFF', 0.6)
 					directionalLight.position.set(0, 10, 0)
 					this.scene.add(directionalLight)
+
 				}
 
 				// Called once per frame
 				updateScene(frame){
+						document.getElementById("text").innerHTML = "Adding new box";
 					const box = new THREE.Mesh(
 						new THREE.BoxBufferGeometry(2, 2, 2),
 						new THREE.MeshPhongMaterial({ color: '#DDFFDD' })
 					)
 					box.position.set(x_position, 0.5, 2)
 					this.floorGroup.add(box)
+					
 				}
 			}
 
