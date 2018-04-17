@@ -41,7 +41,7 @@
 		<div onclick="hideMe(this)" id="description">
 			<h2>Simplest AR</h2>
 			<h5>(click to dismiss)</h5>
-			<p>This example displays a box relative to the pose of a TurtleBot... test.</p>
+			<p>This example displays a box relative to the pose of a TurtleBot... test me yay.</p>
 		</div>
 		<script>
 
@@ -95,7 +95,7 @@
 						new THREE.BoxBufferGeometry(0.1, 0.1, 0.1),
 						new THREE.MeshPhongMaterial({ color: '#DDFFDD' })
 					)
-					box.position.set(2, 0.5, 2)
+					box.position.set(x_position, 0.5, 2)
 					this.floorGroup.add(box)
 
 					// Add some lights to the scene
