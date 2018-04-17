@@ -41,7 +41,7 @@
 		<div onclick="hideMe(this)" id="description">
 			<h2>Simplest AR</h2>
 			<h5>(click to dismiss)</h5>
-			<p>This example displays a box relative to the pose of a TurtleBot... test position.</p>
+			<p>This example displays a box relative to the pose of a TurtleBot... test x position.</p>
 		</div>
 		<script>
 
@@ -61,7 +61,7 @@
      				tfClient.subscribe('turtle1', function(tf) {
        					console.log(tf);
        					console.log(tf.translation.x);
-       					x_positin = tf.translation.x;
+       					x_position = tf.translation.x;
     				 }); 
    
      				ros.on('connection', function() {
