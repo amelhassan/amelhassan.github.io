@@ -41,25 +41,28 @@
 		<div onclick="hideMe(this)" id="description">
 			<h2>Simplest AR</h2>
 			<h5>(click to dismiss)</h5>
-			<p>This example displays a box relative to the pose of a TurtleBot... test ze position.</p>
+			<p>This example displays a box relative to the pose of a TurtleBot... testing connection.</p>
 		</div>
 		<script>
 
-			/*
-			ARSimplestExample shows how to populate the content scene 
-			*/
-			class ARSimplestExample extends XRExampleBase {
-				constructor(domElement){
-					super(domElement, false)
-				}
-
-				connectROS()
-				{
 					// Connect to ROS 
-
+					var x_position;
 					var ros = new ROSLIB.Ros({
        					url : 'ws://10.250.204.52:9090'
     				 });
+   
+     				var tfClient = new ROSLIB.TFClient({
+       					ros : ros,
+       					fixedFrame : 'world',
+       					angularThres : 0.01,
+       					transThres : 0.01
+     				});
+   
+     				tfClient.subscribe('turtle1', function(tf) {
+       					console.log(tf);
+       					console.log(tf.translation.x);
+       					x_positin = tf.translation.x;
+    				 }); 
    
      				ros.on('connection', function() {
        					console.log('Connected to websocket server.');
@@ -72,21 +75,16 @@
      				ros.on('close', function() {
        					console.log('Connection to websocket server closed.');
      				});
+
+
+			/*
+			ARSimplestExample shows how to populate the content scene 
+			*/
+			class ARSimplestExample extends XRExampleBase {
+				constructor(domElement){
+					super(domElement, false)
 				}
 
-				subscribe(x_position){
-					var tfClient = new ROSLIB.TFClient({
-       					ros : ros,
-       					fixedFrame : 'world',
-       					angularThres : 0.01,
-       					transThres : 0.01
-     				});
-   
-     				tfClient.subscribe('turtle1', function(tf) {
-       					console.log(tf);
-       					x_position = tf.translation.x;
-    				 }); 
-				}
 
 
 				// Called during construction to allow the app to populate the THREE.Scene
