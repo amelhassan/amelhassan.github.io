@@ -52,14 +52,12 @@
 					super(domElement, false)
 				}
 
-
-				// Called during construction to allow the app to populate the THREE.Scene
-				initializeScene(){
-
+				connectROS()
+				{
 					// Connect to ROS 
 
 					var ros = new ROSLIB.Ros({
-       					url : 'ws://172.20.10.2:9090'
+       					url : 'ws://10.250.204.52:9090'
     				 });
    
      				var tfClient = new ROSLIB.TFClient({
@@ -85,8 +83,12 @@
      				ros.on('close', function() {
        					console.log('Connection to websocket server closed.');
      				});
+				}
 
-					//**************************************
+
+				// Called during construction to allow the app to populate the THREE.Scene
+				initializeScene(){
+
 					// Add a box 
 					const box = new THREE.Mesh(
 						new THREE.BoxBufferGeometry(0.1, 0.1, 0.1),
