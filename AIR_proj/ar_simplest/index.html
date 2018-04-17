@@ -127,7 +127,7 @@
 				
 				// Called once per frame
 				updateScene(frame){
-					x_position = x_position + 0.2;
+					x_position = x_position + 0.000001;
 					document.getElementById("text").innerHTML = "Adding a box... " + count + " x: " + x_position ;
 					const box = new THREE.Mesh(
 						new THREE.BoxBufferGeometry(0.8, 0.3, 0.5),
