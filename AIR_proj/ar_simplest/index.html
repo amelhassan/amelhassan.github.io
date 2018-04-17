@@ -44,7 +44,7 @@
 			<p id="text" > This example displays a box relative to the pose of a TurtleBot...</p>
 		</div>
 		<script>
-					// Connect to ROS 
+					/*// Connect to ROS 
 					var x_position = 2;
 					var count = 0;
 
@@ -59,11 +59,11 @@
        					transThres : 0.01
      				});
    
-     				/*tfClient.subscribe('turtle1', function(tf) {
+     				tfClient.subscribe('turtle1', function(tf) {
        					console.log(tf);
        					console.log(tf.translation.x);
        					x_position = tf.translation.x;
-    				 });*/ 
+    				 });
    
      				ros.on('connection', function() {
        					console.log('Connected to websocket server.');
@@ -75,7 +75,7 @@
    
      				ros.on('close', function() {
        					console.log('Connection to websocket server closed.');
-     				});
+     				});*/
 
 
 			/*
@@ -128,13 +128,41 @@
 				// Called once per frame
 				updateScene(frame){
 
-						tfClient.subscribe('turtle1', function(tf) {
+					// Connect to ROS 
+					var x_position = 2;
+					var count = 0;
+
+					var ros = new ROSLIB.Ros({
+       					url : 'ws://10.250.204.52:9090'
+    				 });
+   
+     				var tfClient = new ROSLIB.TFClient({
+       					ros : ros,
+       					fixedFrame : 'world',
+       					angularThres : 0.01,
+       					transThres : 0.01
+     				});
+   
+     				tfClient.subscribe('turtle1', function(tf) {
        					console.log(tf);
        					console.log(tf.translation.x);
        					x_position = tf.translation.x;
-       					document.getElementById("text").innerHTML = "Translation... "  + tf.translation.x  ;
-    				 }); 
+       					document.getElementById("text").innerHTML = "Getting x position... " + count + " x: " + x_position ;
+    				 });
    
+     				ros.on('connection', function() {
+       					console.log('Connected to websocket server.');
+     				});
+   
+     				ros.on('error', function(error) {
+       					console.log('Error connecting to websocket server: ', error);
+     				});
+   
+     				ros.on('close', function() {
+       					console.log('Connection to websocket server closed.');
+     				});
+
+     				count = count + 1;
 					/*document.getElementById("text").innerHTML = "Add a new box... " + count + " x: " + x_position ;
 					const box = new THREE.Mesh(
 						new THREE.BoxBufferGeometry(0.8, 0.3, 0.5),
