@@ -41,12 +41,12 @@
 		<div onclick="hideMe(this)" id="description">
 			<h2>Simplest AR</h2>
 			<h5>(click to dismiss)</h5>
-			<p>This example displays a box relative to the pose of a TurtleBot... test x position.</p>
+			<p>This example displays a box relative to the pose of a TurtleBot... test x = 2 position.</p>
 		</div>
 		<script>
 
 					// Connect to ROS 
-					var x_position;
+					var x_position = 2;
 					var ros = new ROSLIB.Ros({
        					url : 'ws://10.250.204.52:9090'
     				 });
