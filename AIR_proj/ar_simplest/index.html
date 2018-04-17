@@ -52,7 +52,7 @@
        					url : 'ws://10.250.204.52:9090'
     				 });
    
-     				var tfClient = new ROSLIB.TFClient({
+     				/*var tfClient = new ROSLIB.TFClient({
        					ros : ros,
        					fixedFrame : 'world',
        					angularThres : 0.01,
@@ -63,7 +63,7 @@
        					console.log(tf);
        					console.log(tf.translation.x);
        					x_position = tf.translation.x;
-    				 }); 
+    				 }); */
    
      				ros.on('connection', function() {
        					console.log('Connected to websocket server.');
@@ -127,6 +127,20 @@
 				
 				// Called once per frame
 				updateScene(frame){
+
+					var tfClient = new ROSLIB.TFClient({
+       					ros : ros,
+       					fixedFrame : 'world',
+       					angularThres : 0.01,
+       					transThres : 0.01
+     				});
+   
+     				tfClient.subscribe('turtle1', function(tf) {
+       					console.log(tf);
+       					console.log(tf.translation.x);
+       					x_position = tf.translation.x;
+    				 }); 
+     				
 						document.getElementById("text").innerHTML = "Adding a new box... " + count + " x: " + x_position ;
 					const box = new THREE.Mesh(
 						new THREE.BoxBufferGeometry(0.8, 0.3, 0.5),
