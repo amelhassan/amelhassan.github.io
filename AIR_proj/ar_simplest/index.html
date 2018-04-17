@@ -132,16 +132,17 @@
        					console.log(tf);
        					console.log(tf.translation.x);
        					x_position = tf.translation.x;
+       					document.getElementById("text").innerHTML = "Translation... "  + tf.translation.x  ;
     				 }); 
    
-					document.getElementById("text").innerHTML = "Add a new box... " + count + " x: " + x_position ;
+					/*document.getElementById("text").innerHTML = "Add a new box... " + count + " x: " + x_position ;
 					const box = new THREE.Mesh(
 						new THREE.BoxBufferGeometry(0.8, 0.3, 0.5),
 						new THREE.MeshPhongMaterial({ color: '#ff14d3' })
 					)
 					box.position.set(x_position, 0.5, 2)
 					this.floorGroup.add(box)
-					count = count + 1;
+					count = count + 1;*/
 					
 				}
 			}
