@@ -41,7 +41,7 @@
 		<div onclick="hideMe(this)" id="description">
 			<h2>Simplest AR</h2>
 			<h5>(click to dismiss)</h5>
-			<p id="text" > This example displays a box relative to the pose of a TurtleBot... frame change.</p>
+			<p id="text" > This example displays a box relative to the pose of a TurtleBot...</p>
 		</div>
 		<script>
 					// Connect to ROS 
@@ -126,7 +126,7 @@
 				updateScene(frame){
 						document.getElementById("text").innerHTML = "Adding new box";
 					const box = new THREE.Mesh(
-						new THREE.BoxBufferGeometry(2, 2, 2),
+						new THREE.BoxBufferGeometry(1, 1, 1),
 						new THREE.MeshPhongMaterial({ color: '#ff14d3' })
 					)
 					box.position.set(x_position, 0.5, 2)
