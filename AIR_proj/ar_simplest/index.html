@@ -41,7 +41,7 @@
 		<div onclick="hideMe(this)" id="description">
 			<h2>Simplest AR</h2>
 			<h5>(click to dismiss)</h5>
-			<p id="text" > This example displays a box relative to the pose of a TurtleBot...changing position</p>
+			<p id="text" > This example displays a box relative to the pose of a TurtleBot...changing x position</p>
 		</div>
 		<script>
 
@@ -138,7 +138,9 @@
 					var ros = new ROSLIB.Ros({
        					url : 'ws://localhost:9090'
     				 });
-   
+   					
+   					document.getElementById("text").innerHTML = "Connected to ROS";
+
      				var tfClient = new ROSLIB.TFClient({
        					ros : ros,
        					fixedFrame : 'world',
@@ -174,7 +176,7 @@
        					console.log('Connection to websocket server closed.');
      				});
 
-
+     				// ORIGINAL... 
 					/*document.getElementById("text").innerHTML = "Adding a box... " + count + " x: " + x_position ;
 					const box = new THREE.Mesh(
 						new THREE.BoxBufferGeometry(0.3, 0.3, 0.5),
