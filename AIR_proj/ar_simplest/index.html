@@ -49,7 +49,7 @@
 					var count = 0;
 
 					var ros = new ROSLIB.Ros({
-       					url : 'ws://10.250.194.241:9090'
+       					url : 'ws://localhost:9090'
     				 });
    
      				var tfClient = new ROSLIB.TFClient({
@@ -63,8 +63,22 @@
        					console.log(tf);
        					x_position = tf.translation.x;
        					console.log(x_position);
-    				 }); 
+
+       					window.addEventListener('DOMContentLoaded', () => {
+							setTimeout(() => {
+									try 
+									{
+										window.pageApp = new ARSimplestExample(document.getElementById('target'))
+									} 
+									catch(e) 
+									{
+										console.error('page error', e)
+									}
+								}, 1000)
+							})
+    					}); 
    
+
      				ros.on('connection', function() {
        					console.log('Connected to websocket server.');
      				});
@@ -141,7 +155,7 @@
 			}
 
 
-			window.addEventListener('DOMContentLoaded', () => {
+			/*window.addEventListener('DOMContentLoaded', () => {
 				setTimeout(() => {
 					try {
 						window.pageApp = new ARSimplestExample(document.getElementById('target'))
@@ -149,7 +163,7 @@
 						console.error('page error', e)
 					}
 				}, 1000)
-			})
+			})*/
 		</script>
 	</body>
 </html>
