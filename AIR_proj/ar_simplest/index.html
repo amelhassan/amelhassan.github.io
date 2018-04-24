@@ -41,7 +41,7 @@
 		<div onclick="hideMe(this)" id="description">
 			<h2>Simplest AR</h2>
 			<h5>(click to dismiss)</h5>
-			<p id="text" > This example displays a box relative to the pose of a TurtleBot...changing x position</p>
+			<p id="text" > This example displays a box relative to the pose of a TurtleBot...changing position</p>
 		</div>
 		<script>
 
@@ -131,6 +131,7 @@
 				updateScene(frame){
 					//x_position = x_position + 0.01;
 					// Connect to ROS 
+					document.getElementById("text").innerHTML = "In update frame";
 					var x_position = 2;
 					var count = 0;
 
