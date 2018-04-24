@@ -41,7 +41,7 @@
 		<div onclick="hideMe(this)" id="description">
 			<h2>Simplest AR</h2>
 			<h5>(click to dismiss)</h5>
-			<p id="text" > This example displays a box relative to the pose of a TurtleBot...changing x position</p>
+			<p id="text" > This example displays a box relative to the pose of a TurtleBot...changing position</p>
 		</div>
 		<script>
 
@@ -147,7 +147,9 @@
        					angularThres : 0.01,
        					transThres : 0.01
      				});
-   
+
+   					document.getElementById("text").innerHTML = "Created tfClient";
+
      				tfClient.subscribe('turtle1', function(tf) {
        					console.log(tf);
        					x_position = tf.translation.x;
@@ -163,6 +165,7 @@
 						count = count + 1;
     				}); 
    					
+   					document.getElementById("text").innerHTML = "Done subscribing";
 
      				ros.on('connection', function() {
        					console.log('Connected to websocket server.');
