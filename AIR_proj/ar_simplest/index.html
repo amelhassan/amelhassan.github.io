@@ -41,7 +41,7 @@
 		<div onclick="hideMe(this)" id="description">
 			<h2>Simplest AR</h2>
 			<h5>(click to dismiss)</h5>
-			<p id="text" > This example displays a box relative to the pose of a TurtleBot...change position of x</p>
+			<p id="text" > This example displays a box relative to the pose of a TurtleBot... subscribing to tf</p>
 		</div>
 		<script>
 
@@ -130,6 +130,7 @@
 
 				initializeScene(){
 
+					document.getElementById("text").innerHTML = "Initializing the scene" ;
 					const box = new THREE.Mesh(
 						new THREE.BoxBufferGeometry(0.5, 0.5, 0.5),
 						new THREE.MeshPhongMaterial({ color: '#fff42d' })
