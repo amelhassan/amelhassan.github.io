@@ -41,12 +41,18 @@
 		<div onclick="hideMe(this)" id="description">
 			<h2>Simplest AR</h2>
 			<h5>(click to dismiss)</h5>
-			<p id="text" > This example displays a box relative to the pose of a TurtleBot...change position</p>
+			<p id="text" > This example displays a box relative to the pose of a TurtleBot...change position of x</p>
 		</div>
 		<script>
 
-					// Connect to ROS 
-					var x_position = 2;
+				window.addEventListener('DOMContentLoaded', () => {
+				setTimeout(() => {
+					try {
+						window.pageApp = new ARSimplestExample(document.getElementById('target'))
+
+
+						// Connect to ROS 
+					var x_pos = 2;
 					var count = 0;
 
 					var ros = new ROSLIB.Ros({
@@ -62,18 +68,9 @@
    
      				tfClient.subscribe('turtle1', function(tf) {
        					console.log(tf);
-       					x_position = tf.translation.x;
-       					console.log(x_position);
-       					window.addEventListener('DOMContentLoaded', () => {
-				setTimeout(() => {
-					try {
-						window.pageApp = new ARSimplestExample(document.getElementById('target'))
-						ARSimplestExample.set_position(x_position);
-					} catch(e) {
-						console.error('page error', e)
-					}
-				}, 1000)
-			})
+       					x_pos = tf.translation.x;
+       					console.log(x_pos);
+       					pageApp.set_the_pose = x_pos;
     				}); 
    					
 
@@ -90,13 +87,24 @@
      				});
 
 
+
+					} catch(e) {
+						console.error('page error', e)
+					}
+					}, 1000)
+				})
+					
+
+
 			/*
 			ARSimplestExample shows how to populate the content scene 
 			*/
 			class ARSimplestExample extends XRExampleBase {
 
+
 				constructor(domElement){
 					super(domElement, false)
+					var x_position = 2;
 
 				}
 
@@ -137,7 +145,7 @@
 
 				}
 
-				set_position(x_pos)
+				set set_the_pose(x_pos)
 				{
 					this.x_position = x_pos;
 				}
