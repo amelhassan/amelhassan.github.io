@@ -45,7 +45,7 @@
 		</div>
 		<script>
 
-					/*// Connect to ROS 
+					// Connect to ROS 
 					var x_position = 2;
 					var count = 0;
 
@@ -64,6 +64,16 @@
        					console.log(tf);
        					x_position = tf.translation.x;
        					console.log(x_position);
+       					window.addEventListener('DOMContentLoaded', () => {
+				setTimeout(() => {
+					try {
+						window.pageApp = new ARSimplestExample(document.getElementById('target'))
+						ARSimplestExample.set_position(x_position);
+					} catch(e) {
+						console.error('page error', e)
+					}
+				}, 1000)
+			})
     				}); 
    					
 
@@ -77,13 +87,14 @@
    
      				ros.on('close', function() {
        					console.log('Connection to websocket server closed.');
-     				});*/
+     				});
 
 
 			/*
 			ARSimplestExample shows how to populate the content scene 
 			*/
 			class ARSimplestExample extends XRExampleBase {
+
 				constructor(domElement){
 					super(domElement, false)
 
@@ -126,83 +137,28 @@
 
 				}
 
+				set_position(x_pos)
+				{
+					this.x_position = x_pos;
+				}
 				
 				// Called once per frame
 				updateScene(frame){
 					//x_position = x_position + 0.01;
-					// Connect to ROS 
-					document.getElementById("text").innerHTML = "In update frame";
-					var x_position = 2;
-					var count = 0;
 
-					var ros = new ROSLIB.Ros({
-       					url : 'ws://localhost:9090'
-    				 });
-   					
-   					document.getElementById("text").innerHTML = "Connected to ROS";
-
-     				var tfClient = new ROSLIB.TFClient({
-       					ros : ros,
-       					fixedFrame : 'world',
-       					angularThres : 0.01,
-       					transThres : 0.01
-     				});
-
-   					document.getElementById("text").innerHTML = "Created tfClient";
-
-     				tfClient.subscribe('turtle1', function(tf) {
-       					console.log(tf);
-       					x_position = tf.translation.x;
-       					console.log(x_position);
-
-       					document.getElementById("text").innerHTML = "Adding box... " + count + " x: " + x_position ;
-						const box = new THREE.Mesh(
-							new THREE.BoxBufferGeometry(0.3, 0.3, 0.5),
-							new THREE.MeshPhongMaterial({ color: '#ff14d3' })
-						)
-						box.position.set(x_position, 0.5, 2)
-						this.floorGroup.add(box)
-						count = count + 1;
-						setTimeout(function(){alert("hi")}, 20000);
-    				}); 
-   					
-   					document.getElementById("text").innerHTML = "Done subscribing";
-
-     				ros.on('connection', function() {
-       					console.log('Connected to websocket server.');
-     				});
-   
-     				ros.on('error', function(error) {
-       					console.log('Error connecting to websocket server: ', error);
-     				});
-   
-     				ros.on('close', function() {
-       					console.log('Connection to websocket server closed.');
-     				});
-
-     				// ORIGINAL... 
-					/*document.getElementById("text").innerHTML = "Adding a box... " + count + " x: " + x_position ;
+					document.getElementById("text").innerHTML = "Adding a box... " + count + " x: " + x_position ;
 					const box = new THREE.Mesh(
 						new THREE.BoxBufferGeometry(0.3, 0.3, 0.5),
 						new THREE.MeshPhongMaterial({ color: '#ff14d3' })
 					)
-					box.position.set(x_position, 0.5, 2)
+					box.position.set(this.x_position, 0.5, 2)
 					this.floorGroup.add(box)
-					count = count + 1;*/
+					count = count + 1;
 					
 				}
 			}
 
 
-			window.addEventListener('DOMContentLoaded', () => {
-				setTimeout(() => {
-					try {
-						window.pageApp = new ARSimplestExample(document.getElementById('target'))
-					} catch(e) {
-						console.error('page error', e)
-					}
-				}, 1000)
-			})
 		</script>
 	</body>
 </html>
