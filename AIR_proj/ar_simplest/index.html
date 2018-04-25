@@ -130,12 +130,12 @@
 
 				initializeScene(){
 
-					document.getElementById("text").innerHTML = "Initializing the scene" ;
+					document.getElementById("text").innerHTML = "Initializing the scene..." ;
 					const box = new THREE.Mesh(
 						new THREE.BoxBufferGeometry(3, 3, 3),
 						new THREE.MeshPhongMaterial({ color: '#fff42d' })
 					)
-					box.position.set(5, 2, 2)
+					box.position.set(3, 2, 2)
 					this.floorGroup.add(box)
 
 					// Add some lights to the scene
@@ -143,6 +143,8 @@
 					const directionalLight = new THREE.DirectionalLight('#FFF', 0.6)
 					directionalLight.position.set(0, 10, 0)
 					this.scene.add(directionalLight)
+
+					document.getElementById("text").innerHTML = "Finished initializing the scene" ;
 
 				}
 
@@ -154,15 +156,14 @@
 				// Called once per frame
 				updateScene(frame){
 					//x_position = x_position + 0.01;
-					var count;
-					document.getElementById("text").innerHTML = "Adding a box... " + count + " x: " + x_position ;
+					//var count;
+					document.getElementById("text").innerHTML = "Adding a box... " + " x: " + x_position ;
 					const box = new THREE.Mesh(
 						new THREE.BoxBufferGeometry(0.3, 0.3, 0.5),
 						new THREE.MeshPhongMaterial({ color: '#ff14d3' })
 					)
 					box.position.set(this.x_position, 0.5, 2)
 					this.floorGroup.add(box)
-					count = count + 1;
 					
 				}
 			}
