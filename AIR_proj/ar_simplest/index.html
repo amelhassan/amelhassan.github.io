@@ -49,8 +49,8 @@
 				setTimeout(() => {
 					try {
 						window.pageApp = new ARSimplestExample(document.getElementById('target'))
-
-
+					var tocontinue = true
+				while (tocontinue){
 						// Connect to ROS 
 					var x_pos = 2;
 					var count = 0;
@@ -87,6 +87,7 @@
      				ros.on('close', function() {
        					console.log('Connection to websocket server closed.');
      				});
+     			}
 
 
 
