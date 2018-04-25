@@ -72,6 +72,8 @@
        					console.log(x_pos);
        					//window.pageApp.set_the_pose = x_pos;
     				}); 
+
+    				document.getElementById("text").innerHTML = "Done subscribing to tf" ;
    					
 
      				ros.on('connection', function() {
@@ -144,7 +146,7 @@
 					directionalLight.position.set(0, 10, 0)
 					this.scene.add(directionalLight)
 
-					document.getElementById("text").innerHTML = "Finished initializing the scene" ;
+					document.getElementById("text").innerHTML = "Done initializing the scene" ;
 
 				}
 
