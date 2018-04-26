@@ -44,16 +44,7 @@
 			<p id="text" > This example displays a box relative to the pose of a TurtleBot... subscribing... </p>
 		</div>
 		<script>
-
-				window.addEventListener('DOMContentLoaded', () => {
-				setTimeout(() => {
-					try {
-						window.pageApp = new ARSimplestExample(document.getElementById('target'))
-					var tocontinue = true
-				while (tocontinue){
 						// Connect to ROS 
-					var x_pos = 2;
-					var count = 0;
 
 					var ros = new ROSLIB.Ros({
        					url : 'ws://localhost:9090'
@@ -87,18 +78,7 @@
      				ros.on('close', function() {
        					console.log('Connection to websocket server closed.');
      				});
-     			}
-
-
-
-					} catch(e) {
-						console.error('page error', e)
-					}
-					}, 1000)
-				})
 					
-
-
 			/*
 			ARSimplestExample shows how to populate the content scene 
 			*/
@@ -151,25 +131,36 @@
 
 				}
 
-				set set_the_pose(x_pos)
+				/*set set_the_pose(x_pos)
 				{
 					this.x_position = x_pos;
-				}
+				}*/
 				
 				// Called once per frame
 				updateScene(frame){
-					//x_position = x_position + 0.01;
-					//var count;
-					document.getElementById("text").innerHTML = "Adding a box... " + " x: " + x_position ;
+					x_position = x_position + 0.01;
+					var count;
+					/*document.getElementById("text").innerHTML = "Adding a box... " + count " x: " + x_position ;*/
 					const box = new THREE.Mesh(
 						new THREE.BoxBufferGeometry(0.3, 0.3, 0.5),
 						new THREE.MeshPhongMaterial({ color: '#ff14d3' })
 					)
 					box.position.set(this.x_position, 0.5, 2)
 					this.floorGroup.add(box)
+					count++;
 					
 				}
 			}
+			
+			window.addEventListener('DOMContentLoaded', () => {
+				setTimeout(() => {
+					try {
+						window.pageApp = new ARSimplestExample(document.getElementById('target'))
+					} catch(e) {
+						console.error('page error', e)
+					}
+				}, 1000)
+			})
 
 
 		</script>
