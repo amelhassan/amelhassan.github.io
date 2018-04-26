@@ -63,8 +63,6 @@
        					console.log(x_pos);
        					//window.pageApp.set_the_pose = x_pos;
     				}); 
-
-    				document.getElementById("text").innerHTML = "Done subscribing to tf" ;
    					
 
      				ros.on('connection', function() {
@@ -87,7 +85,6 @@
 
 				constructor(domElement){
 					super(domElement, false)
-					var x_position = 2;
 
 				}
 
@@ -139,7 +136,6 @@
 				// Called once per frame
 				updateScene(frame){
 					x_position = x_position + 0.01;
-					var count;
 					/*document.getElementById("text").innerHTML = "Adding a box... " + count " x: " + x_position ;*/
 					const box = new THREE.Mesh(
 						new THREE.BoxBufferGeometry(0.3, 0.3, 0.5),
@@ -151,7 +147,7 @@
 					
 				}
 			}
-			
+
 			window.addEventListener('DOMContentLoaded', () => {
 				setTimeout(() => {
 					try {
