@@ -51,38 +51,6 @@
 
 			var x_pos = 2;
 
-			var ros = new ROSLIB.Ros({
-       					url : 'ws://10.0.0.104:9090'
-    				 });
-   
-   
-     				/*ros.on('connection', function() {
-       					console.log('Connected to websocket server.');
-
-       					var tfClient = new ROSLIB.TFClient({
-       					ros : ros,
-       					fixedFrame : 'world',
-       					angularThres : 0.01,
-       					transThres : 0.01
-     					});
-
-       					tfClient.subscribe('turtle1', function(tf) {
-       					console.log(tf);
-       					console.log(tf.translation.x);
-       					tf.translation.x = x_pos;
-       
-    				 }); 
-
-     				});*/
-   
-     				ros.on('error', function(error) {
-       					console.log('Error connecting to websocket server: ', error);
-     				});
-   
-     				ros.on('close', function() {
-       					console.log('Connection to websocket server closed.');
-     				});
-
 			class ARSimplestExample extends XRExampleBase {
 
 
@@ -137,7 +105,6 @@
 				// Called once per frame
 				updateScene(frame){
 		
-
 					/*document.getElementById("text").innerHTML = "Adding a box... " + count " x: " + x_position ;*/
 					const box = new THREE.Mesh(
 						new THREE.BoxBufferGeometry(0.3, 0.3, 0.5),
@@ -153,8 +120,28 @@
 			window.addEventListener('DOMContentLoaded', () => {
 				setTimeout(() => {
 					try {
-						
-						ros.on('connection', function() {
+						console.log('from the list...');
+       					console.log(newList[0]); 
+       					document.getElementById('target').x_position = newList[0];
+						console.log(document.getElementById('target').x_position );
+						window.pageApp = new ARSimplestExample(document.getElementById('target')
+							)
+					} catch(e) {
+						console.error('page error', e)
+					}
+				}, 1000)
+			})
+
+			// Connect to ROS 
+
+			var newList = [];
+
+					var ros = new ROSLIB.Ros({
+       					url : 'ws://10.0.0.104:9090'
+    				 });
+   
+   
+     				ros.on('connection', function() {
        					console.log('Connected to websocket server.');
 
        					var tfClient = new ROSLIB.TFClient({
@@ -164,33 +151,29 @@
        					transThres : 0.01
      					});
 
+       					
+
        					tfClient.subscribe('turtle1', function(tf) {
-       					console.log(tf);
+       					//console.log(tf);
        					console.log(tf.translation.x);
-       					tf.translation.x = x_pos;
-       					document.getElementById('target').x_position = x_pos;
-						console.log('x pose from listener: ');
-						console.log(document.getElementById('target').x_position );
-						window.pageApp = new ARSimplestExample(document.getElementById('target')
-							)
+       					newList.push(tf.translation.x);
+       			
+       					
        
     				 }); 
+       				
+
+
 
      				});
-						/*document.getElementById('target').x_position = x_pos;
-						console.log('x pose from listener: ');
-						console.log(document.getElementById('target').x_position );
-						window.pageApp = new ARSimplestExample(document.getElementById('target')
-							)*/
-					} catch(e) {
-						console.error('page error', e)
-					}
-				}, 1000)
-			})
-
-			// Connect to ROS 
-
-					
+   
+     				ros.on('error', function(error) {
+       					console.log('Error connecting to websocket server: ', error);
+     				});
+   
+     				ros.on('close', function() {
+       					console.log('Connection to websocket server closed.');
+     				});
 		</script>
 	</body>
 </html>
