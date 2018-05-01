@@ -45,6 +45,7 @@
 		</div>
 		<script>
 						// Connect to ROS 
+					var x_position = 2;
 
 					var ros = new ROSLIB.Ros({
        					url : 'ws://localhost:9090'
@@ -59,11 +60,17 @@
    
      				tfClient.subscribe('turtle1', function(tf) {
        					console.log(tf);
-       					x_pos = tf.translation.x;
-       					console.log(x_pos);
+       					x_position = tf.translation.x;
+       					console.log(x_position);
        					//window.pageApp.set_the_pose = x_pos;
     				}); 
    					
+   					// Service call to indicate interest in topic 
+   					connection.addHandler('/tf', function(tf){
+   						
+   					}
+
+   					connection.callService('/rosjs/subscribe','["/sensorPacket",0]',function(e) {});
 
      				ros.on('connection', function() {
        					console.log('Connected to websocket server.');
