@@ -105,12 +105,12 @@
 				// Called once per frame
 				updateScene(frame){
 		
-					document.getElementById("text").innerHTML = "This is the x_pos... " + this.x_position ; 
+					document.getElementById("text").innerHTML = "This is the x_pos... " + x_position ; 
 					const box = new THREE.Mesh(
 						new THREE.BoxBufferGeometry(0.5, 0.5, 0.5),
 						new THREE.MeshPhongMaterial({ color: '#ff14d3' })
 					)
-					box.position.set(this.x_position, 0, 3)
+					box.position.set(x_position, 0, 3)
 					//document.getElementById("text").innerHTML = "This is the x position " + x_pos ;
 					this.floorGroup.add(box)
 					
@@ -126,6 +126,7 @@
 						console.log('from the list...');
        					console.log(newList[0]); 
        					document.getElementById('target').x_position = newList[0];
+       					console.log('from x_position list...');
 						console.log(document.getElementById('target').x_position );
 						
 					} catch(e) {
