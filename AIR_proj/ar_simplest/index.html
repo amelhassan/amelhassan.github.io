@@ -41,11 +41,10 @@
 		<div onclick="hideMe(this)" id="description">
 			<h2>Simplest AR</h2>
 			<h5>(click to dismiss)</h5>
-			<p id="text" > This example displays a box relative to the pose of a TurtleBot... subscribing... </p>
+			<p id="text" > This example displays a box relative to the pose of a TurtleBot... </p>
 		</div>
 		<script>
-						// Connect to ROS 
-					var x_position = 2;
+					// Connect to ROS 
 
 					var ros = new ROSLIB.Ros({
        					url : 'ws://localhost:9090'
@@ -60,18 +59,9 @@
    
      				tfClient.subscribe('turtle1', function(tf) {
        					console.log(tf);
-       					x_position = tf.translation.x;
-       					console.log(x_position);
-       					//window.pageApp.set_the_pose = x_pos;
-    				}); 
-   					
-   					// Service call to indicate interest in topic 
-   					connection.addHandler('/tf', function(tf){
-   						
-   					}
-
-   					connection.callService('/rosjs/subscribe','["/sensorPacket",0]',function(e) {});
-
+       					console.log(tf.translation.x);
+    				 }); 
+   
      				ros.on('connection', function() {
        					console.log('Connected to websocket server.');
      				});
@@ -83,7 +73,6 @@
      				ros.on('close', function() {
        					console.log('Connection to websocket server closed.');
      				});
-					
 			/*
 			ARSimplestExample shows how to populate the content scene 
 			*/
