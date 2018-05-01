@@ -41,7 +41,7 @@
 		<div onclick="hideMe(this)" id="description">
 			<h2>Simplest AR</h2>
 			<h5>(click to dismiss)</h5>
-			<p id="text" > This example displays a box relative to the pose of a TurtleBot... </p>
+			<p id="text" > This example displays a box relative to the pose of a TurtleBot </p>
 		</div>
 		<script>
 
@@ -105,12 +105,12 @@
 				// Called once per frame
 				updateScene(frame){
 		
-					/*document.getElementById("text").innerHTML = "Adding a box... " + count " x: " + x_position ;*/
+					document.getElementById("text").innerHTML = "This is the x_pos" + x_position; 
 					const box = new THREE.Mesh(
 						new THREE.BoxBufferGeometry(0.3, 0.3, 0.5),
 						new THREE.MeshPhongMaterial({ color: '#ff14d3' })
 					)
-					box.position.set(x_pos, 0, 3)
+					box.position.set(x_position, 0, 3)
 					//document.getElementById("text").innerHTML = "This is the x position " + x_pos ;
 					this.floorGroup.add(box)
 					
