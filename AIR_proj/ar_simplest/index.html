@@ -111,7 +111,7 @@
 						new THREE.BoxBufferGeometry(5, 5, 5),
 						new THREE.MeshPhongMaterial({ color: '#fff42d' })
 					)
-					box.position.set(4, 2, 2)
+					box.position.set(2, 2, 2)
 					this.floorGroup.add(box)
 
 					// Add some lights to the scene
@@ -129,15 +129,14 @@
 				
 				// Called once per frame
 				updateScene(frame){
-					x_position = x_position + 0.01;
+		
 					/*document.getElementById("text").innerHTML = "Adding a box... " + count " x: " + x_position ;*/
 					const box = new THREE.Mesh(
 						new THREE.BoxBufferGeometry(0.3, 0.3, 0.5),
 						new THREE.MeshPhongMaterial({ color: '#ff14d3' })
 					)
-					box.position.set(this.x_position, 0.5, 2)
+					box.position.set(2, 0.5, 2)
 					this.floorGroup.add(box)
-					count++;
 					
 				}
 			}
