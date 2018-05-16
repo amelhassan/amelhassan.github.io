@@ -149,7 +149,7 @@
 				// Called once per frame
 				updateScene(frame){
 		
-					document.getElementById("text").innerHTML = "Giving x_pos... ";
+					document.getElementById("text").innerHTML = "Giving x_pos... " + x_pos;
 					const box = new THREE.Mesh(
 						new THREE.BoxBufferGeometry(4, 4, 4),
 						new THREE.MeshPhongMaterial({ color: '#ff14d3' })
