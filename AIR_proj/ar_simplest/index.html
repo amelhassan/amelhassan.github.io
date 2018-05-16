@@ -92,7 +92,7 @@
      				});*/
 
      				
-
+     				var x_pos = 2;
 
 
 			class ARSimplestExample extends XRExampleBase {
@@ -129,7 +129,7 @@
 
 				initializeScene(){
 
-					document.getElementById("text").innerHTML = "Initializing the scene..." ;
+					document.getElementById("text").innerHTML = "Initializing..." ;
 
 					const box = new THREE.Mesh(
 						new THREE.BoxBufferGeometry(2, 2, 2),
@@ -169,7 +169,6 @@
 					try {
 
 						/**************************************************/
-					var x_pos = 2;
 
 					var ros = new ROSLIB.Ros({
        					url : 'ws://10.245.170.53:9090'
