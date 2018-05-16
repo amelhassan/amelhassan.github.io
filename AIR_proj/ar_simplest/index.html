@@ -124,7 +124,7 @@
 						new THREE.BoxBufferGeometry(1, 1, 1),
 						new THREE.MeshPhongMaterial({ color: '#fff42d' })
 					)
-					box.position.set(x_pos, 2, 2)
+					box.position.set(5, 2, 2)
 					this.floorGroup.add(box)
 
 					// Add some lights to the scene
@@ -140,7 +140,7 @@
 		
 					document.getElementById("text").innerHTML = "This is the x_pos " + x_pos;
 					const box = new THREE.Mesh(
-						new THREE.BoxBufferGeometry(0.5, 0.5, 0.5),
+						new THREE.BoxBufferGeometry(3, 3, 3),
 						new THREE.MeshPhongMaterial({ color: '#ff14d3' })
 					)
 					box.position.set(2, 0, 3)
