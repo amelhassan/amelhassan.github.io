@@ -49,7 +49,51 @@
 			ARSimplestExample shows how to populate the content scene 
 			*/
 
-			var x_pos = 2;
+			
+
+			// Connect to ROS 
+
+					/*var x_pos;
+
+					var ros = new ROSLIB.Ros({
+       					url : 'ws://10.245.170.53:9090'
+       					
+    				 });
+
+					ros.on('connection', function() {
+       					console.log('Connected to websocket server.');
+       					console.log('First');
+       					
+     				});
+   
+     				ros.on('error', function(error) {
+       					console.log('Error connecting to websocket server: ', error);
+     				});
+   
+     				ros.on('close', function() {
+       					console.log('Connection to websocket server closed.');
+       					console.log(x_pos);
+       					console.log('Last');
+     				});
+   
+     				var tfClient = new ROSLIB.TFClient({
+       					ros : ros,
+       					fixedFrame : 'world',
+       					angularThres : 0.01,
+       					transThres : 0.01
+       					
+     				});
+   
+     				tfClient.subscribe('turtle1', function(tf) {
+       					x_pos = tf.translation.x; // assign value
+       					console.log('Second');
+       					return x_pos; // return value 
+       					
+     				});*/
+
+     				
+
+
 
 			class ARSimplestExample extends XRExampleBase {
 
@@ -78,40 +122,7 @@
 
 				// ************* CONNECT TO ROS ************* 
 
-				connectROS()
-				{
-					// Connect to ROS 
 
-					var ros = new ROSLIB.Ros({
-       					url : 'ws://10.245.170.53:9090'
-    				 });
-   
-     				var tfClient = new ROSLIB.TFClient({
-       					ros : ros,
-       					fixedFrame : 'world',
-       					angularThres : 0.01,
-       					transThres : 0.01
-     				});
-   
-     				tfClient.subscribe('turtle1', function(tf) {
-       					x_pos = tf.translation.x; // assign value
-       					return x_pos; // return value 
-     				});
-
-
-     				ros.on('connection', function() {
-       					console.log('Connected to websocket server.');
-
-     				});
-   
-     				ros.on('error', function(error) {
-       					console.log('Error connecting to websocket server: ', error);
-     				});
-   
-     				ros.on('close', function() {
-       					console.log('Connection to websocket server closed.');
-     				});
-				}
 
 
        			// ************* UPDATE SCENE **************
@@ -138,7 +149,7 @@
 				// Called once per frame
 				updateScene(frame){
 		
-					document.getElementById("text").innerHTML = "This is the x_pos " + x_pos;
+					document.getElementById("text").innerHTML = "This is the x_pos ";
 					const box = new THREE.Mesh(
 						new THREE.BoxBufferGeometry(3, 3, 3),
 						new THREE.MeshPhongMaterial({ color: '#ff14d3' })
@@ -156,7 +167,51 @@
 
 				setTimeout(() => {
 					try {
-						window.pageApp = new ARSimplestExample(document.getElementById('target'))
+
+						/**************************************************/
+						var x_pos;
+
+					var ros = new ROSLIB.Ros({
+       					url : 'ws://10.245.170.53:9090'
+       					
+    				 });
+
+					ros.on('connection', function() {
+       					console.log('Connected to websocket server.');
+       					console.log('First');
+       					
+     				});
+   
+     				ros.on('error', function(error) {
+       					console.log('Error connecting to websocket server: ', error);
+     				});
+   
+     				ros.on('close', function() {
+       					console.log('Connection to websocket server closed.');
+       					console.log(x_pos);
+       					console.log('Last');
+     				});
+   
+     				var tfClient = new ROSLIB.TFClient({
+       					ros : ros,
+       					fixedFrame : 'world',
+       					angularThres : 0.01,
+       					transThres : 0.01
+       					
+     				});
+   
+     				tfClient.subscribe('turtle1', function(tf) {
+       					x_pos = tf.translation.x; // assign value
+       					console.log('Second');
+       					return x_pos; // return value 
+       					
+     				});
+
+						/***************************************************/
+						// pass x_variable through here 
+						window.pageApp = new ARSimplestExample(document.getElementById('target')
+
+							)
 					} catch(e) {
 						console.error('page error', e)
 					}
